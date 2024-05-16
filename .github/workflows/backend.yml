@@ -16,7 +16,9 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
+    defaults:
+      run:
+        working-directory: 'backend'
     steps:
     - uses: actions/checkout@v4
     - name: Use Node V20
@@ -24,7 +26,6 @@ jobs:
       with:
         node-version: 20.X
         cache: 'npm'
-    - run: cd backend
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
